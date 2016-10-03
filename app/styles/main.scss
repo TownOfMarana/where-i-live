@@ -6,6 +6,7 @@
 
 a {
   cursor: pointer;
+  font-weight: bold;
 }
 
 body {
@@ -36,4 +37,12 @@ body {
 h3.resultsHeader {
   margin-bottom: 0;
   margin-top: 0;
+}
+
+.go-back-link {
+  padding-top: 15px;
+}
+
+.item-label {
+  text-decoration: underline;
 }

@@ -5,6 +5,10 @@
       <input type="text" placeholder="Start typing an address" ng-model="searchText"
              class="form-control">
 
+      <div class="go-back-link" ng-if="detailsVisible">
+        <a ng-click="goBack()">< Back to search results</a>
+      </div>
+
       <div class="results">
         <i class="fa fa-spinner fa-spin" ng-if="isLoading"></i>
 
@@ -28,53 +32,63 @@
           <div class="col-sm-6">
 
             <h4>Parcel Information</h4>
-            <div>Jurisdiction: {{ selectedAddress.JURISD }}</div>
-            <div>Parcel No: {{ selectedAddress.PARCEL }}</div>
-            <div>Address: {{ selectedAddress.ADDRESS }}</div>
-            <div>City: {{ selectedAddress.ZIPCITY }}</div>
-            <div>Zip: {{ selectedAddress.ZIPCODE }}</div>
-            <div>Subdivision: {{ selectedAddress.SUBDIV }}</div>
-            <div>Zoning: {{selectedAddress.ZONING }}</div>
-            <div>Annexation: {{selectedAddress.ANNEX }}</div>
+            <div><span class="item-label">Jurisdiction:</span> {{ selectedAddress.JURISD }}</div>
+            <div><span class="item-label">Parcel No:</span> {{ selectedAddress.PARCEL }}</div>
+            <div><span class="item-label">Address:</span> {{ selectedAddress.ADDRESS }}</div>
+            <div><span class="item-label">City:</span> {{ selectedAddress.ZIPCITY }}</div>
+            <div><span class="item-label">Zip:</span> {{ selectedAddress.ZIPCODE }}</div>
+            <div><span class="item-label">Subdivision:</span> {{ selectedAddress.SUBDIV }}</div>
+            <div><span class="item-label">Zoning:</span>
+              <a href="http://marana.maps.arcgis.com/apps/webappviewer/index.html?id=018e0f2bb7f840f08bee72aff3bd4cb7" target="_blank">{{selectedAddress.ZONING }}</a>
+            </div>
+            <div><span class="item-label">Annexation:</span> {{selectedAddress.ANNEX }}</div>
+            <div>
+              <a ng-href="http://gis.pima.gov/maps/detail.cfm?parcel={{ selectedAddress.PARCEL }}" target="_blank">PIMA
+                COUNTY GIS PARCEL DETAIL
+              </a>
+            </div>
 
             <h4>Utility Information</h4>
-            <div>Water Provider: {{ selectedAddress.Water_Co }}</div>
-            <div>Electric Provider: {{ selectedAddress.ELEC_CO }}</div>
+            <div><span class="item-label">Water Provider:</span> <span ng-bind-html="selectedAddress.Water_Co"></span></div>
+            <div><span class="item-label">Electric Provider:</span> <span ng-bind-html="selectedAddress.ELEC_CO"></span></div>
 
             <div ng-if="selectedAddress.FIRE_DIST.trim()">
               <h4>Fire District</h4>
-              <div>{{selectedAddress.FIRE_DIST}}</div>
+              <div ng-bind-html="selectedAddress.FIRE_DIST"></div>
             </div>
           </div>
           <div class="col-sm-6">
             <div ng-if="selectedAddress.BEN_AREA_1.trim()">
               <h4>Benefit Area</h4>
-              <div>{{ selectedAddress.BEN_AREA_1 }}</div>
-              <div ng-if="selectedAddress.BEN_AREA_2.trim()">{{ selectedAddress.BEN_AREA_2 }}</div>
+              <div><a target="_blank" href="http://www.maranaaz.gov/impact-fees">{{ selectedAddress.BEN_AREA_1 }}</a></div>
+              <div ng-if="selectedAddress.BEN_AREA_2.trim()"><a target="_blank" href="http://www.maranaaz.gov/impact-fees">{{ selectedAddress.BEN_AREA_2 }}</a></div>
             </div>
             <div ng-if="selectedAddress.IMPROV.trim()">
               <h4>Facilities District</h4>
-              <div>{{ selectedAddress.IMPROV }}</div>
+              <div>
+                <a target="_blank" href="http://www.maranaaz.gov/special-districts">{{ selectedAddress.IMPROV }}</a>
+              </div>
             </div>
             <div ng-if="selectedAddress.FACIL_DIST.trim()">
               <h4>Improvement District</h4>
-              <div>{{ selectedAddress.FACIL_DIST }}</div>
+              <div>
+                <a target="_blank" href="http://www.maranaaz.gov/special-districts">{{ selectedAddress.FACIL_DIST }}</a>
+              </div>
             </div>
             <div ng-if="selectedAddress.SPEC_PLAN.trim()">
               <h4>Specific Plan</h4>
               <div>{{ selectedAddress.SPEC_PLAN }}</div>
             </div>
             <h4>Voter Information</h4>
-            <div>Voter Precinct: {{ selectedAddress.PRECINCT }}</div>
-            <div>Congressional District: {{ selectedAddress.DIST_CON }}</div>
-            <div>Legislative District: {{ selectedAddress.DIST_LEG }}</div>
+            <div><span class="item-label">Voter Precinct:</span> {{ selectedAddress.PRECINCT }}</div>
+            <div><span class="item-label">Congressional District:</span> {{ selectedAddress.DIST_CON }}</div>
+            <div><span class="item-label">Legislative District:</span> {{ selectedAddress.DIST_LEG }}</div>
+            <div>
+              <a href="http://www.maranaaz.gov/voter-information" target="_blank">More information</a>
+            </div>
           </div>
-
-
         </div>
-
       </div>
-
     </div>
   </div>
 </div>
