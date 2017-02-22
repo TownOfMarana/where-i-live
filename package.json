@@ -1,5 +1,5 @@
 {
-  "name": "Where I Live",
+  "name": "where-i-live",
   "private": true,
   "scripts": {
     "test": "grunt"
