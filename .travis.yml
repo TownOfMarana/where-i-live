@@ -5,6 +5,8 @@ before_install: npm install -g grunt-cli
 install:
   - npm install
   - bower install
+  - gem install sass
+  - gem install compass
 before_script: grunt
 cache:
   directories:
