@@ -47,7 +47,7 @@ angular.module('whereILiveApp')
     // Grab address data from ArcGIS REST endpoint
     function getAddresses () {
       $scope.isLoading = true;
-      var url = 'http://maranaegov.com/arcgis/rest/services/External/WhatsMyServiceArea/MapServer/1/query?where=ADDRESS+LIKE+%27%25' + $scope.searchText + '%25%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson';
+      var url = 'https://maranaegov.com/arcgis/rest/services/External/WhatsMyServiceArea/MapServer/1/query?where=ADDRESS+LIKE+%27%25' + $scope.searchText + '%25%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson';
       $http.get(url, {timeout: canceler.promise}).then(function (response) {
           response.data.features.map(function (item) {
 
